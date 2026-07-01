@@ -324,10 +324,9 @@ with col_c1:
         plot_bgcolor='rgba(0,0,0,0)',
         margin=dict(l=10, r=10, t=10, b=10),
         xaxis_title="Timeline",
-        yaxis=dict(title="Price (USD)", titlefont=dict(color="#66fcf1"), tickfont=dict(color="#66fcf1")),
+        yaxis=dict(title=dict(text="Price (USD)", font=dict(color="#66fcf1")), tickfont=dict(color="#66fcf1")),
         yaxis2=dict(
-            title="Volume (USD)", 
-            titlefont=dict(color="#45f3ff"), 
+            title=dict(text="Volume (USD)", font=dict(color="#45f3ff")), 
             tickfont=dict(color="#45f3ff"),
             overlaying="y", 
             side="right"
