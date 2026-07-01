@@ -282,14 +282,41 @@ with col_m4:
 
 # Health state messaging
 if "Retrained" in action:
-    st.error(
-        f"🚨 **Auto-Retrain Event Triggered**: Model validation accuracy dropped below 65% due to data drift. "
-        f"The pipeline completed an automated training run on updated data at {latest_metrics.get('date')}, saving updated weights."
-    )
+    st.markdown(f"""
+    <div style="background: rgba(255, 75, 75, 0.08); border: 1px solid rgba(255, 75, 75, 0.3); border-radius: 12px; padding: 18px; margin: 15px 0; box-shadow: 0 4px 20px rgba(255, 75, 75, 0.1); display: flex; align-items: center;">
+        <div style="font-size: 26px; margin-right: 15px; filter: drop-shadow(0 0 5px rgba(255, 75, 75, 0.4));">🚨</div>
+        <div>
+            <h4 style="margin: 0; color: #ff4b4b; font-size: 1.1rem; font-weight: 700;">Auto-Retrain Event Triggered</h4>
+            <p style="margin: 4px 0 0 0; color: #c5c6c7; font-size: 0.95rem; line-height: 1.45;">
+                Model validation accuracy dropped below <b>65%</b> due to data drift. The pipeline completed an automated training run on updated data at <b>{latest_metrics.get('date')}</b>, saving updated weights to production.
+            </p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 elif accuracy < 0.65:
-    st.warning("⚠️ **Warning**: Accuracy has dropped close to the retraining trigger threshold. High probability of drift.")
+    st.markdown("""
+    <div style="background: rgba(255, 170, 0, 0.08); border: 1px solid rgba(255, 170, 0, 0.3); border-radius: 12px; padding: 18px; margin: 15px 0; box-shadow: 0 4px 20px rgba(255, 170, 0, 0.1); display: flex; align-items: center;">
+        <div style="font-size: 26px; margin-right: 15px; filter: drop-shadow(0 0 5px rgba(255, 170, 0, 0.4));">⚠️</div>
+        <div>
+            <h4 style="margin: 0; color: #ffaa00; font-size: 1.1rem; font-weight: 700;">Performance Margin Warning</h4>
+            <p style="margin: 4px 0 0 0; color: #c5c6c7; font-size: 0.95rem; line-height: 1.45;">
+                Validation accuracy has dropped close to the retraining trigger threshold. High probability of incoming data drift.
+            </p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 else:
-    st.success("🟢 **Pipeline Status Healthy**: Validation accuracy is above the 65% limit. Automatic cron checks are stable.")
+    st.markdown("""
+    <div style="background: rgba(102, 252, 241, 0.06); border: 1px solid rgba(102, 252, 241, 0.25); border-radius: 12px; padding: 18px; margin: 15px 0; box-shadow: 0 4px 20px rgba(102, 252, 241, 0.08); display: flex; align-items: center;">
+        <div style="font-size: 26px; margin-right: 15px; filter: drop-shadow(0 0 5px rgba(102, 252, 241, 0.4));">🟢</div>
+        <div>
+            <h4 style="margin: 0; color: #66fcf1; font-size: 1.1rem; font-weight: 700;">Pipeline Status Stable</h4>
+            <p style="margin: 4px 0 0 0; color: #c5c6c7; font-size: 0.95rem; line-height: 1.45;">
+                All systems operational. Validation accuracy is safely above the 65% limit. Automatic daily cron checks are passing.
+            </p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ----------------- DYNAMIC TELEMETRY CHARTS -----------------
 st.markdown("### 📈 Ingestion & Pipeline Trends")
