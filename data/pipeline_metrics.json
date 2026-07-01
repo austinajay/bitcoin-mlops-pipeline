@@ -1,0 +1,7 @@
+{
+    "date": "2026-07-01",
+    "latest_price": 59951.23585633875,
+    "latest_volume": 33912187282.706944,
+    "model_accuracy": 0.8,
+    "action_taken": "Retrained due to Drift"
+}
