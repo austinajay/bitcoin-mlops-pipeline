@@ -7,6 +7,21 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__
 METRICS_FILE = os.path.join(DATA_DIR, "pipeline_metrics.json")
 HISTORY_FILE = os.path.join(DATA_DIR, "historical_runs.json")
 
+# Centralized features list for model training and inference
+FEATURES = [
+    "price_return",
+    "price_return_2d",
+    "price_return_3d",
+    "price_sma_5_ratio",
+    "price_sma_10_ratio",
+    "price_sma_20_ratio",
+    "volatility_5",
+    "volatility_10",
+    "volume_change",
+    "volume_sma_5_ratio",
+    "rsi_14"
+]
+
 def log_daily_run(metrics):
     """
     Log MLOps daily run metrics.

@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from sklearn.preprocessing import StandardScaler
+from utils import FEATURES
 
 # Locate directories relative to this file
 SRC_SRC_DIR = os.path.dirname(__file__)
@@ -77,7 +78,6 @@ def get_prediction():
         
         # Load data
         df = pd.read_csv(data_path)
-        FEATURES = ["price", "volume", "price_return", "sma_5", "sma_10", "volatility", "volume_change"]
         X = df[FEATURES].values
         
         # Scale

@@ -1,9 +1,9 @@
 [
     {
         "date": "2026-07-01",
-        "latest_price": 60054.003044580335,
-        "latest_volume": 35539134271.18571,
-        "model_accuracy": 0.7073,
+        "latest_price": 59866.70962382304,
+        "latest_volume": 35830490637.06601,
+        "model_accuracy": 0.8934,
         "action_taken": "Initialized & Trained"
     }
 ]
