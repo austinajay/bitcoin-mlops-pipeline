@@ -432,7 +432,8 @@ with tab2:
     model = load_keras_model()
     if model is not None and df_data is not None:
         try:
-            X = df_data[["price", "volume"]].values
+            FEATURES = ["price", "volume", "price_return", "sma_5", "sma_10", "volatility", "volume_change"]
+            X = df_data[FEATURES].values
             scaler = StandardScaler()
             X_scaled = scaler.fit_transform(X)
             
