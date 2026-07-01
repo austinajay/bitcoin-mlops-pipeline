@@ -1,7 +1,1 @@
-tensorflow==2.15.0
-streamlit==1.32.0
-pandas==2.2.0
-numpy==1.26.4
-requests==2.31.0
-scikit-learn==1.4.0
-plotly==5.19.0
+Please refer to README.md at the project root for full documentation and live links.
