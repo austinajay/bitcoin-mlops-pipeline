@@ -142,7 +142,6 @@ def load_datasets():
     return None
 
 # Load model and compile if necessary
-@st.cache_resource
 def load_keras_model():
     model_file = os.path.join(MODELS_DIR, "latest_model.keras")
     if os.path.exists(model_file):
