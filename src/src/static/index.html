@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin MLOps Forecast Telemetry Hub</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- HEADER -->
+        <header class="app-header">
+            <div class="logo-area">
+                <i class="fa-solid fa-link-slash logo-icon"></i>
+                <div class="title-sub">
+                    <h1>Bitcoin MLOps Daily Telemetry</h1>
+                    <p>Standard HTML/CSS/JS Frontend • FastAPI Backend REST Engine</p>
+                </div>
+            </div>
+            <div class="api-status">
+                <span class="pulse-beacon green" id="api-beacon"></span>
+                <span class="status-text" id="api-status-text">Backend Connected</span>
+            </div>
+        </header>
+
+        <!-- PIPELINE STATUS BANNER CONTAINER -->
+        <div id="alert-container">
+            <!-- Custom HTML Alert Cards will be injected here dynamically -->
+        </div>
+
+        <!-- MAIN LAYOUT GRID -->
+        <main class="dashboard-grid">
+            
+            <!-- LEFT PANEL: STATS & CONTROLS -->
+            <section class="control-panel">
+                <h3 class="panel-title"><i class="fa-solid fa-sliders"></i> MLOps Control Board</h3>
+                
+                <!-- METRIC CARDS -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-label"><i class="fa-solid fa-coins"></i> BTC Price (USD)</span>
+                        <h2 class="metric-value" id="btc-price">$0.00</h2>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label"><i class="fa-solid fa-chart-simple"></i> 24h Vol (USD)</span>
+                        <h2 class="metric-value" id="btc-volume">$0.00</h2>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label"><i class="fa-solid fa-crosshairs"></i> Val Accuracy</span>
+                        <h2 class="metric-value" id="model-accuracy" style="color: #66fcf1;">0.00%</h2>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label"><i class="fa-solid fa-heart-pulse"></i> Model State</span>
+                        <h2 class="metric-value" id="model-state" style="color: #00ffcc;">STABLE</h2>
+                    </div>
+                </div>
+
+                <!-- CONTROLS SECTION -->
+                <div class="actions-box">
+                    <h4>Pipeline Automation Tasks</h4>
+                    <button class="btn btn-primary" id="btn-ingest">
+                        <i class="fa-solid fa-cloud-arrow-down"></i> Fetch Market Data
+                    </button>
+                    <button class="btn btn-secondary" id="btn-train">
+                        <i class="fa-solid fa-brain"></i> Trigger Retraining
+                    </button>
+                </div>
+                
+                <!-- DRIFT INJECTION -->
+                <div class="drift-box">
+                    <h4>Simulation Diagnostic Tools</h4>
+                    <p>Simulate market anomalies by inverting training targets to force validation drift retraining.</p>
+                    <button class="btn btn-danger" id="btn-drift">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Simulate Drift Event
+                    </button>
+                </div>
+            </section>
+
+            <!-- RIGHT PANEL: CHARTS -->
+            <section class="charts-panel">
+                <div class="chart-box">
+                    <h3 class="panel-title"><i class="fa-solid fa-chart-line"></i> Market Price & Volume Trends</h3>
+                    <div id="chart-price" class="apex-chart-container"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- SUBORDINATE GRID SECTION -->
+        <section class="bottom-grid">
+            
+            <!-- TABS CONTROLLER -->
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="tab-data"><i class="fa-solid fa-table"></i> Ingested Ledger</button>
+                    <button class="tab-btn" data-tab="tab-infer"><i class="fa-solid fa-wand-magic-sparkles"></i> Live Predictions</button>
+                    <button class="tab-btn" data-tab="tab-logs"><i class="fa-solid fa-terminal"></i> System Logs</button>
+                </div>
+                
+                <div class="tab-content active" id="tab-data">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Price (USD)</th>
+                                    <th>Volume (USD)</th>
+                                    <th>Rolling Volatility</th>
+                                    <th>Actual Next Trend</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data-table-body">
+                                <tr><td colspan="5" class="text-center">Loading ledger data...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="tab-infer">
+                    <div class="infer-wrapper">
+                        <div class="forecast-card" id="forecast-card">
+                            <span class="forecast-label">Tomorrow's Prediction</span>
+                            <h2 class="forecast-value" id="forecast-value">STABLE</h2>
+                            <p class="forecast-conf" id="forecast-conf">Confidence: 0.00%</p>
+                        </div>
+                        <div class="infer-table-area">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Close Price</th>
+                                            <th>Inferred Trend</th>
+                                            <th>Confidence</th>
+                                            <th>Outcome</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="infer-table-body">
+                                        <tr><td colspan="5" class="text-center">Initializing inference sequence...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="tab-logs">
+                    <div class="terminal-container">
+                        <div class="terminal-header">
+                            <span class="dot red-dot"></span>
+                            <span class="dot yellow-dot"></span>
+                            <span class="dot green-dot"></span>
+                            <span class="terminal-title">mlops_runner.log</span>
+                        </div>
+                        <div class="terminal-body" id="terminal-logs">
+                            [System] Ready to run tasks. Click buttons above to execute components.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ApexCharts CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- Custom Application Logic -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

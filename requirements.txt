@@ -3,3 +3,5 @@ scikit-learn
 plotly
 gitpython
 scipy
+fastapi
+uvicorn
